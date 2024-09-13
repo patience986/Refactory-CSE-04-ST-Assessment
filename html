@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Information Form</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 2px dotted red;
+            border-radius: 8px;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            color: red;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            width: 30%;
+            padding: 10px;
+            border-right: 2px dotted red;
+        }
+
+        .column:last-child {
+            border-right: none;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: red; /* Make headings red */
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100%;
+            border-bottom: 2px dotted red;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .required-label::after {
+            content: "*";
+            color: red;
+            margin-left: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-button {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <!-- Top Image with Logo -->
+        <div class="header">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
+
+        <!-- Form Starts -->
+        <form id="flight-form" action="#" method="POST">
+            <div class="row">
+                <!-- Passenger Information -->
+                <div class="column">
+                    <h2 class="pi"> Passenger Information</h2>
+                    <label class="required-label" for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" name="full-name" ><br>
+                    <div class="error-message" id="full-name-error"></div>
+
+                    <label class="required-label" for="gender">Gender:</label>
+                    <select id="gender" name="gender" >
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select><br>
+                    <div class="error-message" id="gender-error"></div>
+
+                    <label class="required-label" for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" ><br>
+                    <div class="error-message" id="dob-error"></div>
+
+                    <label class="required-label" for="nationality">Nationality:</label>
+                    <input type="text" id="nationality" name="nationality" ><br>
+                    <div class="error-message" id="nationality-error"></div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="column">
+                    <h2>Contact Information</h2>
+                    <label class="required-label" for="phone-number">Phone Number:</label>
+                    <input type="tel" id="phone-number" name="phone-number" ><br>
+                    <div class="error-message" id="phone-number-error"></div>
+
+                    <label class="required-label" for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" ><br>
+                    <div class="error-message" id="email-error"></div>
+
+                    <label for="pobox">P.O. Box Number:</label>
+                    <input type="text" id="pobox" name="pobox"><br>
+
+                    <label class="required-label" for="emergency-phone">Emergency Phone Number:</label>
+                    <input type="tel" id="emergency-phone" name="emergency-phone" ><br>
+                    <div class="error-message" id="emergency-phone-error"></div>
+                </div>
+
+                <!-- Flight Information -->
+                <div class="column">
+                    <h2>Flight Information</h2>
+                    <label class="required-label" for="passport-number">Passport Number:</label>
+                    <input type="text" id="passport-number" name="passport-number" ><br>
+                    <div class="error-message" id="passport-number-error"></div>
+
+                    <label for="visa-document">Visa Document:</label>
+                    <input type="text" id="visa-document" name="visa-document"><br>
+
+                    <label class="required-label" for="departure-city">Departure City:</label>
+                    <input type="text" id="departure-city" name="departure-city" ><br>
+                    <div class="error-message" id="departure-city-error"></div>
+
+                    <label class="required-label" for="destination-city">Destination City:</label>
+                    <input type="text" id="destination-city" name="destination-city" ><br>
+                    <div class="error-message" id="destination-city-error"></div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="submit-button">
+                <button type="submit">Submit</button>
+            </div>
+            <div class="success-message" id="success-message"></div>
+        </form>
+    </div>
+
+
+    <script>
+        document.getElementById('flight-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Clear all previous error messages
+            document.querySelectorAll('.error-message').forEach(function (element) {
+                element.textContent = '';
+            });
+
+            let isValid = true;
+
+            // Validate Full Name
+            const fullName = document.getElementById('full-name');
+            if (fullName.value.trim() === '') {
+                isValid = false;
+                document.getElementById('full-name-error').textContent = 'Invalid.';
+            }
+
+            // Validate Gender
+            const gender = document.getElementById('gender');
+            if (gender.value === '') {
+                isValid = false;
+                document.getElementById('gender-error').textContent = 'Invalid.';
+            }
+
+            // Validate Date of Birth
+            const dob = document.getElementById('dob');
+            if (dob.value === '') {
+                isValid = false;
+                document.getElementById('dob-error').textContent = 'Invalid.';
+            }
+
+            // Validate Nationality
+            const nationality = document.getElementById('nationality');
+            if (nationality.value.trim() === '') {
+                isValid = false;
+                document.getElementById('nationality-error').textContent = 'Invalid.';
+            }
+
+            // Validate Phone Number
+            const phoneNumber = document.getElementById('phone-number');
+            if (phoneNumber.value.trim() === '') {
+                isValid = false;
+                document.getElementById('phone-number-error').textContent = 'Invalid.';
+            }
+
+            // Validate Email
+            const email = document.getElementById('email');
+            if (email.value.trim() === '') {
+                isValid = false;
+                document.getElementById('email-error').textContent = 'Invalid.';
+            }
+
+            // Validate Emergency Phone Number
+            const emergencyPhone = document.getElementById('emergency-phone');
+            if (emergencyPhone.value.trim() === '') {
+                isValid = false;
+                document.getElementById('emergency-phone-error').textContent = 'Invalid.';
+            }
+
+                // Validate Passport Number
+                const passportNumber = document.getElementById('passport-number');
+                if (passportNumber.value.trim() === '') {
+                    isValid = false;
+                    document.getElementById('passport-number-error').textContent = 'Invalid.';
+                }
+
+                // Validate Departure City
+                const departureCity = document.getElementById('departure-city');
+                if (departureCity.value.trim() === '') {
+                    isValid = false;
+                    document.getElementById('departure-city-error').textContent = 'Invalid.';
+                }
+
+                // Validate Destination City
+                const destinationCity = document.getElementById('destination-city');
+                if (destinationCity.value.trim() === '') {
+                    isValid = false;
+                    document.getElementById('destination-city-error').textContent = 'Invalid.';
+                }
+
+                // If the form is valid, show success message
+                if (isValid) {
+                    document.getElementById('success-message').textContent = 'Invalid';
+                    
+                    // Clear form fields after successful submission
+                    document.getElementById('flight-form').reset();
+
+                    // Clear success message after a few seconds
+                    setTimeout(function() {
+                        document.getElementById('success-message').textContent = '';
+                    }, 3000);
+                } else {
+                    document.getElementById('success-message').textContent = '';  // Clear success message if form is invalid
+                }
+            });
+    </script>
+</body>
+</html>
